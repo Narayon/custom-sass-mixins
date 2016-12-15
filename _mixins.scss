@@ -29,7 +29,7 @@ $css-lock-max: 1240;
   }
 }
 
-// CUSTOM MIXIN - SCROLLING SHADOWS
+// SCROLLING SHADOWS
 
 // $orientation: scrolling orientation
 // $background-color: background color of the box,
@@ -83,4 +83,16 @@ $css-lock-max: 1240;
 
   // Chrome for Android needs this
   border-radius: 1px;
+}
+
+/// REMOVE THE UNIT OF A LENGTH
+
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
 }
