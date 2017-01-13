@@ -96,3 +96,17 @@ $css-lock-max: 1240;
 
   @return $number;
 }
+
+
+// STAGGER ANIMATION
+
+// $type: delay animation or transition properties
+// $num-child: number of element children
+// $delay: delay to apply to each
+@mixin stagger-children($type, $num-child, $delay) {
+  @for $i from 1 through $num-child {
+    &:nth-child(#{$i}) {
+      #{$type}-delay: #{$i * $delay}ms;
+    }
+  }
+}
